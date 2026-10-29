@@ -1,0 +1,73 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Proyecto web desarrollado con Django">
+    <title>{{ titulo }}</title>
+
+    <link rel="stylesheet" href="{% static 'web/styles.css' %}">
+</head>
+<body>
+
+    <header class="hero">
+        <div class="container hero-content">
+            <span class="eyebrow">PYTHON II · DESARROLLO WEB</span>
+            <h1>{{ titulo }}</h1>
+            <p class="hero-subtitle">{{ subtitulo }}</p>
+            <a href="#modulos" class="button">Explorar componentes</a>
+        </div>
+    </header>
+
+    <main class="container main-content">
+
+        <section class="intro-card">
+            <span class="section-label">BIENVENIDO</span>
+            <h2>Estado del proyecto</h2>
+            <p>{{ descripcion }}</p>
+            <span class="status">
+                <span class="status-dot"></span>
+                Aplicación configurada con Django
+            </span>
+        </section>
+
+        <section id="modulos" class="modules-section">
+            <div class="section-heading">
+                <div>
+                    <span class="section-label">TECNOLOGÍAS</span>
+                    <h2>Componentes del proyecto</h2>
+                </div>
+                <p class="section-description">
+                    Conoce las herramientas utilizadas.
+                </p>
+            </div>
+
+            <div class="cards-grid">
+                {% for modulo in modulos %}
+                    <article class="card">
+                        <div class="card-number">
+                            {{ modulo.icono }}
+                        </div>
+                        <h3>{{ modulo.nombre }}</h3>
+                        <p>{{ modulo.descripcion }}</p>
+                        <span class="card-tag">Módulo del sistema</span>
+                    </article>
+                {% empty %}
+                    <p>No hay módulos disponibles actualmente.</p>
+                {% endfor %}
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Proyecto académico de Python y Django</p>
+            <p>Desarrollado en 2026</p>
+        </div>
+    </footer>
+
+</body>
+</html>
